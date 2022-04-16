@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "COMMIT_EDITMSG": "git-commit",
+        "xlocale": "cpp"
+    }
+}
