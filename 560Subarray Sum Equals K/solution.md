@@ -1,4 +1,4 @@
-## Solutuon using hashing 
+## Solution using hashing 
 
 > The approach follwed here is that at every index of the given array , we check if the prefixSum(till that element) -target = any element previously found . If that happens , then it means that we have found a subarray with sum equal to k
 
