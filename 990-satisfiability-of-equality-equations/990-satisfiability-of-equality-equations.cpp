@@ -12,12 +12,20 @@ public:
       for(int i = 0 ; i  < 26 ; i ++){
         parent[i] = i ;
       }
-      
       for(auto it : equations){
+        // doing union operation 
+        /*  
+        a-> b
+        ^
+        |
+        c
+        */
         if(it[1] == '=') parent[find_parent(it[0] - 'a')] = find_parent(it[3] - 'a') ;
       }
       
       for(auto it : equations){
+        
+        //if any equaltion gives that the nodes previously connected are not , then return false ;
         if(it[1] == '!' &&find_parent(it[0] - 'a') == find_parent(it[3] - 'a')) return false  ;
       }
       
