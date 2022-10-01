@@ -10,7 +10,6 @@ public:
       if(dp[n][m] != -1){
         return dp[n][m] ;
       }
-      
       return dp[n][m] = grid[n][m] + min(minPath(grid , n- 1 , m , dp) , minPath(grid , n , m-1 , dp)) ;
       
      }
