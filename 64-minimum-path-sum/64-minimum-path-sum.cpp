@@ -2,21 +2,23 @@ class Solution {
 public:
     
   
-    int minCost(vector<vector<int>> &cost,int m, int n,vector<vector<int>>& memo) { 
-      if (n <0 || m <0) 
-         return INT_MAX; 
-      else if(m==0 && n==0) 
-         return cost[m][n]; 
-      if(memo[m][n]!=-1)
-          return memo[m][n];
-      int r=cost[m][n]+min(minCost(cost,m-1,n,memo),minCost(cost,m,n-1,memo));
-        memo[m][n]=r;
-      return r;
-    } 
+    int minPath(vector<vector<int>>& grid , int n , int m , vector<vector<int>> &dp){
+      if( n < 0 || m < 0 ) return INT_MAX ;
+      
+      else if(n== 0 && m== 0)
+        return grid[n][m] ;
+      if(dp[n][m] != -1){
+        return dp[n][m] ;
+      }
+      
+      return dp[n][m] = grid[n][m] + min(minPath(grid , n- 1 , m , dp) , minPath(grid , n , m-1 , dp)) ;
+      
+     }
     
     int minPathSum(vector<vector<int>>& grid) {
-        int m=grid.size(),n=grid[0].size();
-        vector<vector<int>> memo(m,vector<int>(n, -1));
-        return minCost(grid,m-1,n-1,memo);
+        int n = grid.size() ;
+        int m = grid[0].size() ;
+        vector<vector<int>> dp(n ,vector<int> (m , -1)) ;   
+      return minPath(grid , n-1 , m-1 , dp) ;
     }
 };
