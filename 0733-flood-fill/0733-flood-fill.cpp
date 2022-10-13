@@ -1,22 +1,43 @@
 class Solution {
 public:
   
-  void dfs(int i , int j , int inColor ,int newColor ,vector<vector<int>> &image){
-    int n = image.size() ;
-    int m = image[0].size() ;
-      if( i < 0 || j < 0 || i >=  n || j>= m || image[i][j] != inColor) return ;
-       
-      image[i][j] = newColor ;
-      dfs(i-1,j,inColor,newColor,image ) ;
-      dfs(i+1,j,inColor,newColor,image ) ;
-      dfs(i,j-1,inColor,newColor,image ) ;
-      dfs(i,j+1,inColor,newColor,image ) ;
-     
-  }
-    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int Color) {
-        int inColor = image[sr][sc] ;
-        if(inColor!= Color) dfs(sr,sc,inColor,Color,image) ;
+  bool isvalid(int i,int j,int m,int n)
+    {
+        if(i>=m||j>=n||j<0||i<0)
+            return false;
+        return true;
+    }
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+        int n =  image.size() ;
+        int m = image[0].size() ;
       
-       return image ;
+        vector<pair<int,int>> directions={{1,0},{-1,0},{0,1},{0,-1}}; 
+      
+        queue<pair<int, int>>  q ;
+          
+        int inColor = image[sr][sc] ;
+        
+        if(image[sr][sc] == color) return image ;
+      
+        q.push({sr,sc}) ;
+        image[sr][sc] =color ;
+      
+        while(!q.empty()){
+          auto top = q.front() ;
+          q.pop() ;
+          
+          for(auto it : directions){
+            int nx = top.first + it.first ;
+            int ny = top.second + it.second ;
+            
+            if(isvalid(nx,ny , n, m) && image[nx][ny] == inColor){
+              q.push({nx,ny}) ;
+              image[nx][ny] = color ;
+            }
+          }
+        }
+      
+      return image ;
+        
     }
 };
