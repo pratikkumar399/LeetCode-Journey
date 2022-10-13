@@ -7,6 +7,7 @@ public:
       if( i < 0 || j < 0) return ;
       if( i >= n || j >= m) return ;
       if(image[i][j] != inColor)  return ;
+       
     
       image[i][j] = newColor ;
       dfs(i-1,j,inColor,newColor,image ) ;
