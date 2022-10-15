@@ -19,12 +19,12 @@ class Solution {
     }
     int numProvinces(vector<vector<int>> adj, int V) {
         // code here
-        vector<int> visited(V+1 , 0 ) ;
+        vector<int> visited(V , 0 ) ;
         
         if(V== 0) return 0 ;
         int count = 0 ;
         
-        for(int it = 0 ; it < adj.size() ; it++){
+        for(int it = 0 ; it < adj.size() ;it++){
             if(!visited[it]){
                 count++ ;
                 dfs(adj , it , visited) ;
