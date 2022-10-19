@@ -29,7 +29,7 @@ public:
         int m = mat[0].size() ;
       
       //making a queue of node class
-        queue<node>  q  ;
+        queue<pair<int,int>>  q  ;
         // initially taking all the distances as -1
       vector<vector<int>>  distance(n , vector<int>(m , -1)) ;
       
@@ -37,7 +37,7 @@ public:
       for(int i = 0 ; i < n ; i++){
         for(int j = 0 ; j < m ; j++ ){
           if(mat[i][j] == 0){
-            q.push(node(i,j)) ;
+            q.push(make_pair(i,j)) ;
             distance[i][j] = 0 ;
           }
         }
@@ -45,14 +45,13 @@ public:
         
       while(!q.empty()){
         //getting x and y coordinates of the matrix 
-        int x =  q.front()._x ;
-        int y =  q.front()._y ;
+        auto [x,y] = q.front() ;
         q.pop() ;
         for(int i = 0 ; i < 4 ; i++){
           int nx = x + dx[i] ;
           int ny =  y + dy[i] ;
           if(isvalid(nx , ny ,  n , m) && distance[nx][ny] == -1){
-            q.push(node(nx , ny)) ;
+            q.push(make_pair(nx , ny)) ;
             distance[nx][ny] = distance[x][y] +1  ;
           }
         }
