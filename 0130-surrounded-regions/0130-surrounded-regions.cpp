@@ -19,7 +19,7 @@ public:
          for(int i = 0 ; i <n ; i++){
            for(int  j = 0 ; j < m ; j++){
              if(board[i][j] == 'O' && isBorder(i , j , n , m)){
-               board[i][j] = '.' ;
+               board[i][j] = '1' ;
                q.push(make_pair(i , j)) ;
              }
            }
@@ -34,7 +34,7 @@ public:
           int ny = top.second + it.second ;
           
           if(isValid(nx , ny , n , m) && board[nx][ny] == 'O'){
-              board[nx][ny] ='.' ;
+              board[nx][ny] ='1' ;
               q.push(make_pair(nx,ny)) ;
             
           }
@@ -45,7 +45,7 @@ public:
            for(int  j = 0 ; j < m ; j++){
              if(board[i][j] == 'O'){
                board[i][j] = 'X' ;
-             }else if(board[i][j] == '.'){
+             }else if(board[i][j] == '1'){
                board[i][j] = 'O' ;
              }
            }
