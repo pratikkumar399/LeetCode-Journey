@@ -13,13 +13,14 @@ public:
         int n = board.size() ;
         int m = board[0].size() ;
         vector<pair<int,int>> directions={{1,0},{-1,0},{0,1},{0,-1}}; 
+      vector<vector<int>>  visited(n +1 , vector<int> (m , 0)) ;
         
         queue<pair<int, int>>  q ;
         
          for(int i = 0 ; i <n ; i++){
            for(int  j = 0 ; j < m ; j++){
-             if(board[i][j] == 'O' && isBorder(i , j , n , m)){
-               board[i][j] = '1' ;
+             if(board[i][j] == 'O' && isBorder(i , j , n , m) && !visited[i][j]){
+               visited[i][j] = 2 ;
                q.push(make_pair(i , j)) ;
              }
            }
@@ -33,8 +34,8 @@ public:
           int nx = top.first + it.first ;
           int ny = top.second + it.second ;
           
-          if(isValid(nx , ny , n , m) && board[nx][ny] == 'O'){
-              board[nx][ny] ='1' ;
+          if(isValid(nx , ny , n , m) && board[nx][ny] == 'O' && visited[nx][ny] != 2){
+              visited[nx][ny] = 2 ;
               q.push(make_pair(nx,ny)) ;
             
           }
@@ -43,10 +44,8 @@ public:
       
       for(int i = 0 ; i <n ; i++){
            for(int  j = 0 ; j < m ; j++){
-             if(board[i][j] == 'O'){
+             if(board[i][j] == 'O' && visited[i][j] != 2){
                board[i][j] = 'X' ;
-             }else if(board[i][j] == '1'){
-               board[i][j] = 'O' ;
              }
            }
          }
