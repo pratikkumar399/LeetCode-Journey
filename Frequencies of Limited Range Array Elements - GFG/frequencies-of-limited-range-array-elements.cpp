@@ -15,12 +15,12 @@ class Solution{
             mp[arr[i]]++ ;
         }
         
-        for(int i = 1 ; i <= N ; i++){
-            if(mp.find(i) != mp.end()){
-                arr[i-1] = mp[i] ;
+        for(int i = 0 ; i < N ; i++){
+            if(mp.find(i+1) != mp.end()){
+                arr[i] = mp[i+1] ;
             }
             else{
-                arr[i-1] = 0 ;
+                arr[i] = 0 ;
             }
         }
     }
