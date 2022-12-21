@@ -5,11 +5,11 @@ public:
       set<int> st;
       
         for(auto it : nums) {
-          mp[it]++ ;
+          st.insert(it) ;
         }
         nums.clear() ;
-        for(auto it : mp){
-          nums.push_back(it.first) ;
+        for(auto it : st){
+          nums.push_back(it) ;
         }
       
       return nums.size() ;
