@@ -12,7 +12,7 @@ public:
             end = mid  ;
           }
           else {
-            start = mid + 1 ;
+            start = mid + 1  ;
           }
           
         }
