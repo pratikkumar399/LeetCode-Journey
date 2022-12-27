@@ -23,7 +23,7 @@ public:
             }
             else{
               //  if target lies between mid and last 
-                if(target>=nums[mid] && target <= nums[last]){
+                if(target>nums[mid] && target <= nums[last]){
                     start = mid +1 ;
                     
                 }
