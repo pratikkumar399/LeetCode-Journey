@@ -13,7 +13,7 @@ public:
             // checking the search space 
             if(nums[mid] >= nums[start]){
               // if the target lies between start and mid 
-                if(target <= nums[mid] && target >= nums[start]){
+                if(target < nums[mid] && target >= nums[start]){
                     last = mid -1;
                 }
               // other wise move the next part
