@@ -26,25 +26,23 @@ public:
       dp[0][0] = 1 ;
       for(int i = 0 ; i < n ; i++){
         for(int j = 0 ; j < m ; j++){
+          // not taking up the zeroth row and col
           if(i != 0 && j != 0 )  dp[i][j] = 0 ;
-         
-          if ( matrix[i][j] != 1) 
+          // ignoring the obstacle
+          if( matrix[i][j] != 1) 
           { 
             if(i > 0) dp[i][j] += dp[i-1][j] ;
             if(j > 0)dp[i][j] += dp[i][j-1] ;
           }
-          
-          
-          
-          
-        }
+          }
       }
-      
-      
-      
-     return dp[n- 1][m-1] ;
+      return dp[n- 1][m-1] ;
     }
 };
+
+
+
+
 
 // so the thing is that there is an obstacle in the road and we need to avoid the obstacle 
 // so what we can do is that if we find any obstacle in the path we are taking we will not take that road 
