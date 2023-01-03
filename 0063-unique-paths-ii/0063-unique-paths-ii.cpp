@@ -23,12 +23,17 @@ public:
       int m = matrix[0].size() ;
         // vector<vector<int>>  dp(n ,  vector<int> (m , -1)) ;
       vector<vector<int>>  dp(n , vector<int> (m )) ;
+      // storing the initial value in the dp array 
       dp[0][0] = 1 ;
       for(int i = 0 ; i < n ; i++){
         for(int j = 0 ; j < m ; j++){
-          // not taking up the zeroth row and col
-          if(i != 0 && j != 0 )  dp[i][j] = 0 ;
-          // ignoring the obstacle
+          // if the i and j value are greater than 0 then we have to take the dp value as 0 
+          if(i != 0 && j != 0  && matrix[i][j] == 1) {
+            dp[i][j] = 0 ;
+            continue ;
+          }
+          // ignoring the obstacle and then taking up both the opetions 
+          
           if( matrix[i][j] != 1) 
           { 
             if(i > 0) dp[i][j] += dp[i-1][j] ;
