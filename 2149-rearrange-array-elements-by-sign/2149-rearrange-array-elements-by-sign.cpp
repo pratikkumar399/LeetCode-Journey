@@ -2,23 +2,53 @@ class Solution {
 public:
     vector<int> rearrangeArray(vector<int>&nums ) {
       int n = nums.size();
-        vector<int> ans(n,0);
-        int indexpos = 0, indexneg=1;
-        for(auto num: nums){
-            if(num>0){
-                ans[indexpos] = num;
-                indexpos+=2;
-            }
-            if(num<0){
-                ans[indexneg] = num;
-                indexneg += 2;
-            }
-        }
+        vector<int> ans;
+      // simply store the index of all the elements and tehn place the elements at that index 
+        // int indexpos = 0, indexneg=1;
+        // for(auto num: nums){
+        //     if(num>0){
+        //         ans[indexpos] = num;
+        //         indexpos+=2;
+        //     }
+        //     if(num<0){
+        //         ans[indexneg] = num;
+        //         indexneg += 2;
+        //     }
+        // }
+      
+      
+       for(int i = 0 , j = 0 ; i <  n && j < n ; i++ , j++){
+          
+         while(nums[i] < 0){
+           i++ ;
+         }
+        ans.push_back(nums[i]) ;
+         while(nums[j] > 0 ){
+           j++ ;
+         }
+         ans.push_back(nums[j]) ;
+       }
         return ans;
     }
 };
 
+// int n = nums.size();
+//         vector<int> res;
 
+//         for(int i =0, j=0; i<n && j<n; i++,j++ )
+//         {
+//             while(nums[i]<0) 
+//             {
+//                 i++;
+//             }
+//             res.push_back(nums[i]);
+//             while(nums[j]>0) 
+//             {
+//                 j++;
+//             }
+//             res.push_back(nums[j]);                     
+//         }
+//         return res;
 // so in this question we are given an array of nums and we have to make a pair of numbers with the same sign 
 // and also we have to take care that the numbers with same sign maintain their order 
 // so lets discuss the approach 
