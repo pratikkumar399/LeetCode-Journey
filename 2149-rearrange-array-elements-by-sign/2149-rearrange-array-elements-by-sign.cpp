@@ -32,23 +32,6 @@ public:
     }
 };
 
-// int n = nums.size();
-//         vector<int> res;
-
-//         for(int i =0, j=0; i<n && j<n; i++,j++ )
-//         {
-//             while(nums[i]<0) 
-//             {
-//                 i++;
-//             }
-//             res.push_back(nums[i]);
-//             while(nums[j]>0) 
-//             {
-//                 j++;
-//             }
-//             res.push_back(nums[j]);                     
-//         }
-//         return res;
 // so in this question we are given an array of nums and we have to make a pair of numbers with the same sign 
 // and also we have to take care that the numbers with same sign maintain their order 
 // so lets discuss the approach 
