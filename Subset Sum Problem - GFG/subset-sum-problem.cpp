@@ -41,12 +41,17 @@ public:
         // problem , here we need to take care of that thing and then probably we can deal with the edge cases 
         for(int i =1  ; i < n +1 ; i++){
             for(int  j = 1 ; j < sum +1 ; j++){
+                // lets check if the current sum gives us the subset sum equal to the given sum or not 
+                // if it is equal then we can store a true value at that place in the dp array 
+                bool notTaken =  dp[i-1][j]  ;
+                bool taken = false ;
                 if(arr[i-1] <= j){
-                    dp[i][j] = ( dp[i-1][j - arr[i-1]])  or dp[i-1][j] ; 
+                    taken = ( dp[i-1][j - arr[i-1]])  ;
                 }
-                else {
-                    dp[i][j] = dp[i-1][j] ;
-                }
+                // if we ignoring the item then we are left with a single choice to ignore the item and move forward 
+              
+                dp[i][j] = taken or notTaken ;
+                
             }
         }
         
