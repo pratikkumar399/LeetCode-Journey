@@ -34,6 +34,7 @@ public:
       vector<vector<int>>  distance(n , vector<int>(m , -1)) ;
       
       // if the element in the row is zero mark the distance as zero and then we will store the node in the queue
+      // store the coordinates of all the zeroes 
       for(int i = 0 ; i < n ; i++){
         for(int j = 0 ; j < m ; j++ ){
           if(mat[i][j] == 0){
