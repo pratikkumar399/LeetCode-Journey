@@ -1,23 +1,25 @@
 class Solution {
 public:
     int longestConsecutive(vector<int>& nums) {
+      // since we cannot sort the number therefore we have to find other ways to convert the number into sorted order 
         set<int>  st(nums.begin() , nums.end()) ;
         int maxi = INT_MIN ;
-      vector<int>  res ;
+      
+        vector<int>  res ;
+      
         for(auto it :  st){
         res.push_back(it) ;
         }
-      int count  = 0 ;
-      int n =res.size();
-      if(n  <= 1) return  n ;
+     
+        int count  = 0 ;
       
-      for(int i = 0 ; i < res.size() - 1 ; i++){
+        int n =res.size();
+        if(n  <= 1) return  n ;
+      
+       for(int i = 0 ; i < n - 1 ; i++){
         if(res[i+1] -1 == res[i] ) {
           count++ ;
-          cout<<res[i]  <<" "<<res[i + 1]  <<" " <<count<<endl; 
-          
-          // cout<<count ;
-        } 
+       } 
         else if(res[i+1] -1 != res[i]){
           count =0;
         }
