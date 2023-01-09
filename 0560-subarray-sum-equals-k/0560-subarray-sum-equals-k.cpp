@@ -4,10 +4,12 @@ public:
         int count = 0 ;
         int sum = 0 ;
         unordered_map<int,int> m ;
-        m[sum]++ ;
+        // m[sum]++ ;
        
         for(int i = 0 ; i < arr.size(); i++){
            sum  += arr[i];
+          if(sum == k ) count++ ;
+          
            int ans = sum - k;
           if(m.find(ans) != m.end()){
              count += m[ans];
