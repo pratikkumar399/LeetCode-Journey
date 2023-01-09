@@ -10,12 +10,16 @@ public:
            sum  += arr[i];
           if(sum == k ) count++ ;
           
+          // 6 - 3 
            int ans = sum - k;
-          if(m.find(ans) != m.end()){
+          //1 2 3
+          // (1  , 1) (3 , 1)  (6 , 1)  
+          
+          
              count += m[ans];
-          }
           m[sum]++ ;
            }
         return count ;
     }
 };
+
