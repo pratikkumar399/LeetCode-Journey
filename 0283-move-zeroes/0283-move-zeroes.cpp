@@ -1,19 +1,21 @@
 class Solution {
 public:
     void moveZeroes(vector<int>& list) {
-        
+      // 
       int n = list.size() ;
-      // int count = 0 ;
-      // for(int i = 0 ; i < n ; i++ ){
-      //   if(nums[i]  == 0){
-      //     nums.erase(nums.begin() + i) ; 
-      //     count++ ;
-      //   }
-      // }
-      // nums.resize(n) ;
+      vector<int> res ;
       
-      list.erase( remove (list.begin(), list.end(), 0), list.end() );
-      list.resize(n) ;
+      for(int i = 0 ; i < n  ; i++){
+         if(list[i] != 0){
+           res.push_back(list[i]) ;
+         }
+      }
+      
+      res.resize(n) ;
+      
+      for(int i = 0 ; i < n ; i++){
+        list[i] = res[i] ;
+      }
       
     }
 };
