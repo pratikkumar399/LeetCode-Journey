@@ -6,11 +6,14 @@ public:
       if(n <= 1) return intervals;
        
         
-      
+      // sorting the intervals 
       sort(intervals.begin() , intervals.end()) ;
+      // pushing the initial intervals 
       res.push_back(intervals[0]) ;
-        for(int i = 0 ; i <  n  ; i++){
+        for(int i = 1 ; i <  n  ; i++){
+          //now check if the interval can be megerd or not 
           if(res.back()[1] >= intervals[i][0]){
+            // check if the last interval is inside the range or not
             res.back()[1] = max(intervals[i][1] , res.back()[1] ) ;
             
           }
