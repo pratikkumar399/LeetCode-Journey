@@ -20,7 +20,7 @@ public:
         q.push(root) ;
         
         while(!q.empty()){
-        vector<int> level ;
+        vector<int> level ; //  this stores the level at each node
         int size = q.size() ;
         for(int i = 0 ; i < size ; i++){
           root =  q.front()  ;
