@@ -129,15 +129,21 @@ vector <int> postOrder(Node* root)
   // Your code here 
   vector<int> ans ;
   if(root == NULL)  return ans ;
-  stack<Node*> st ;
+  stack<Node*> st  , s2;
   st.push(root) ;
   while(!st.empty()){
       auto top = st.top() ;
       st.pop() ;
-      ans.push_back(top->data) ;
+      s2.push(top) ;
       if(top->left != NULL) st.push(top->left) ;
       if(top->right != NULL) st.push(top->right) ;
   } 
-  reverse(ans.begin()  ,ans.end()) ;
+  
+  while(!s2.empty()){
+    //   auto top = ;
+    ans.push_back(s2.top()->data) ;
+
+      s2.pop() ;
+  }
   return ans ;
 }
