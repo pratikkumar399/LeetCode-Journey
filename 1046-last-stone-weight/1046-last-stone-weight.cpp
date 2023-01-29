@@ -6,17 +6,13 @@ public:
        for(auto it : stones){
          pq.push(it) ;
        }
-       int size = stones.size() ;
-       while(size > 1){
+       while(pq.size() > 1){
           int largest = pq.top() ;
           pq.pop() ;
           int second_largest = pq.top() ;
-          pq.pop() ;
-          size = size - 2 ;
-         
+          pq.pop() ;         
           if(largest - second_largest > 0) {
              pq.push(largest - second_largest) ;
-             size = size + 1 ;
           }
        }
       
