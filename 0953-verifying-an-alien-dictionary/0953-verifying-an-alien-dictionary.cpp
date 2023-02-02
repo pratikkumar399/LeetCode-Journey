@@ -1,7 +1,7 @@
 class Solution {
 public:
     bool isAlienSorted(vector<string>& words, string order) {
-        map<int,char> mp , mp2; 
+        int mp[26] ;
       
        for(int i = 0 ; i < order.size() ; i++){
          mp[order[i] - 'a'] = i ;
