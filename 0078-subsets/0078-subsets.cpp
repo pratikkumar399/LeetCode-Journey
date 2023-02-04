@@ -1,43 +1,46 @@
 // class Solution {
 // public:
-//     vector<vector<int>> subsets(vector<int>& nums) {
-//         vector<vector<int>> subs;
-//         vector<int> sub;
-//         subsets(nums, 0, sub, subs);
-//         return subs;
-//     }
-// private:
-//     void subsets(vector<int>& nums, int i, vector<int>& sub, vector<vector<int>>& subs) {
-//         subs.push_back(sub);
-//         for (int j = i; j < nums.size(); j++) {
-//             sub.push_back(nums[j]);
-//             subsets(nums, j + 1, sub, subs);
-//             sub.pop_back();
+//     vector<vector<int>> ans;
+    
+//     void sub(vector<int> &nums, int i, vector<int> temp)
+//     {
+//         if(i==nums.size())
+//         {
+//             ans.push_back(temp);
+//             return;
 //         }
+        
+//         sub(nums, i+1, temp);
+//         temp.push_back(nums[i]);
+//         sub(nums, i+1, temp);
+//     }
+    
+//     vector<vector<int>> subsets(vector<int>& nums) {
+//         vector<int> temp;       
+//         sub(nums, 0, temp); // or sub(nums, 0, vector<int> {});
+//         return ans;
 //     }
 // };
-
 
 class Solution
 {
     public:
-    
-    void subsets(int index , vector<vector<int>> &ans , vector<int> &arr , vector<int> &ds){
+     vector<vector<int>> ans ;
+    void subsets(int index , vector<int> &arr , vector<int> ds){
         if(index == arr.size()){
             ans.push_back(ds) ;
             return ;
         }
-        subsets(index+1,ans,arr,ds);
+        subsets(index+1,arr,ds);
         ds.push_back(arr[index]) ;
-        subsets(index+1,ans,arr,ds) ;
-        ds.pop_back();
+        subsets(index+1,arr,ds) ;
+        // ds.pop_back();
     }
     vector<vector<int> > subsets(vector<int>& A)
     {
         //code here
-        vector<vector<int>> ans ;
         vector<int> ds ;
-        subsets(0, ans , A , ds) ;
+        subsets(0, A , ds) ;
         return ans;
     }
 };
