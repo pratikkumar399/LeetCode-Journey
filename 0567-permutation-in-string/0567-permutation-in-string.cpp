@@ -1,5 +1,13 @@
 class Solution {
 public:
+   bool matches(vector<int> p , vector<int> s){
+     for(int i = 0 ; i < 26 ; i++){
+       if(p[i] != s[i]) return false ;
+     }
+     
+     return true ;
+   }
+  
     bool checkInclusion(string p, string s) {
         vector<int> phash(26 , 0) ;
         vector<int> hash(26 , 0) ;
@@ -18,20 +26,15 @@ public:
          right++ ;
        }
       
-      right-- ;
-      while(right < s_size){
-        if(phash == hash){
-          return true ;
-        }
-        right++ ;
-        if(right != s_size){
-          hash[s[right] - 'a'] += 1 ;
-        }
-        
-        hash[s[left] - 'a'] -= 1 ;
-        
-        left++ ;
+      for(int i = 0 ; i < s_size - p_size ; i++){
+         if(matches(phash , hash)){
+           return true ;
+         }
+          hash[s[i +  p_size] - 'a'] += 1 ;
+          hash[s[i] - 'a'] -= 1 ;
       }
-      return false ;
+      
+     
+      return matches(phash  ,hash) ;
     }
 };
