@@ -18,13 +18,10 @@ public:
        
       if(s_size < p_size) return false ;
       
-      int left = 0 , right = 0 ;
-      
-       while(right < p_size){
-         phash[p[right] - 'a']++ ;
-         hash[s[right] - 'a']++ ;
-         right++ ;
-       }
+      for(int i = 0 ; i < p_size ; i++){
+        phash[p[i] - 'a']++ ;
+         hash[s[i] - 'a']++ ;
+      }
       
       for(int i = 0 ; i < s_size - p_size ; i++){
          if(matches(phash , hash)){
