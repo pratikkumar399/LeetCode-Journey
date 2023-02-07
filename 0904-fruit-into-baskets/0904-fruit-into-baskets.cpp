@@ -11,10 +11,11 @@ public:
         
        int start = 0 ;
        int end = 0 ;
+       int maxi = INT_MIN ;
         for(auto it : fruits){
            m[fruits[end]]++ ;
            end++ ;
-            if(m.size() >  2){ 
+            while(m.size() >  2){ 
               m[fruits[start]]-- ;
             // we can remove that element from the map
             if(m[fruits[start]] == 0){
@@ -23,10 +24,11 @@ public:
             }
            start++ ;
           }
+          maxi =max(maxi , end - start);
         }
         
         
       
-        return end - start ;
+        return maxi ;
     }
 };
