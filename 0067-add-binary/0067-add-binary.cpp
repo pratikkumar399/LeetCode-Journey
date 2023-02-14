@@ -10,10 +10,10 @@ public:
           if(i>= 0) sum += a[i--] - '0';
           if(j >= 0) sum += b[j--] - '0';
           carry = (sum > 1) ? 1 : 0 ;
-          ans += to_string(sum%2) ;
+          ans = to_string(sum%2) + ans ;
         }
-      if(carry) ans += to_string(carry);
-        reverse(ans.begin() , ans.end()) ;
+      if(carry) ans = to_string(carry) + ans;
+        // reverse(ans.begin() , ans.end()) ;
       return ans ;
     }
 };
