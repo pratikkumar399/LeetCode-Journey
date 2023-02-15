@@ -1,18 +1,24 @@
 class Solution {
 public:
-    bool f(int index , int target , vector<int> &arr , vector<vector<int>> &dp){
-      if(target < 0 ) return false; 
-      if(target == 0) return true; 
-      if(index == 0) return (arr[0] == target ) ;
-
-      if(dp[index][target] != -1) return dp[index][target] ;
-      return dp[index][target] = f(index - 1 , target , arr , dp) or f(index - 1 , target - arr[index] , arr , dp) ;
-    } 
-
-    bool subsetSumToK(int n, int k, vector<int> &arr) {
-        vector<vector<int>> dp(n , vector<int> (k + 1 , -1)) ;
-        return f(n-1 , k , arr , dp) ;
-    }
+    bool f(int index , vector<int> &nums , vector<vector<int>> &dp , int target){
+      if(target < 0) return false ;
+      if(target == 0) return true ;
+      if(index == 0) return (nums[0] == target) ;
+      
+     if(dp[index][target] != -1) return dp[index][target] ;
+     bool notTake = f(index - 1 , nums , dp , target) ;
+     bool take = f(index - 1 , nums , dp , target - nums[index]) ;
+     
+     return dp[index][target] = take or notTake ; 
+   }
+  
+   
+   bool subset(  int index ,int target , vector<int> &nums){
+    
+    vector<vector<int>> dp(index , vector<int>(target +1 , -1)) ;
+     
+     return f(index -1 , nums , dp , target) ;
+   }
   
     bool canPartition(vector<int>& nums) {
          int sum = 0 ;
@@ -20,6 +26,6 @@ public:
          
         if(sum % 2) return false ;
         int target = sum /2 ;
-        return subsetSumToK(nums.size() , target , nums) ;
+        return subset(nums.size() , target , nums) ;
     }
 };
