@@ -23,11 +23,11 @@ public:
         // popping out the element with min stops first.
         while (!q.empty())
         {
-            auto it = q.front();
+            auto [f,s] = q.front();
             q.pop();
-            int stops = it.first;
-            int node = it.second.first;
-            int cost = it.second.second;
+            int stops = f;
+            int node = s.first;
+            int cost = s.second;
 
             // We stop the process as soon as the limit for the stops reaches.
             if (stops > K)
