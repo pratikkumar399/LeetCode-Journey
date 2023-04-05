@@ -31,7 +31,7 @@ public:
 
             // We stop the process as soon as the limit for the stops reaches.
             if (stops > K)
-                continue;
+                break;
             for (auto iter : adj[node])
             {
                 int adjNode = iter.first;
