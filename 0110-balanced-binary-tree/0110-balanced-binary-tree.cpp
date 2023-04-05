@@ -11,33 +11,20 @@
  */
 class Solution {
 public:
-  bool ans ;
-    bool isBalanced(TreeNode* root) {
-       ans = true;
-        check(root);
-        return ans;
-        
-    }
     
-    int check(TreeNode* node){
-        if(node == NULL){
-            return 0 ;
-        }
-       
-      if(!ans) // if Answer is already False then return it.
-            return 0;
-      
-        int lh = check(node-> left) ;
-       
+   
+    
+    
+    bool isBalanced(TreeNode* root) {
+        if(root == NULL) return true;
+        int lh = height(root->left) ;
+        int rh = height (root->right) ;
         
-        int rh = check(node->right) ;
-       
-        
-        if(abs(lh - rh ) > 1){
-              ans = false;
-        }
-        return 1+ max(lh,rh) ;
+        return ((abs(lh-rh) <= 1) and isBalanced(root->left)  and isBalanced(root->right)) ;
     }
-  
-  
+    int height(TreeNode *root){
+        if(root == NULL) return 1;
+
+        return  1 + max(height(root->left) , height(root->right));
+    }
 };
