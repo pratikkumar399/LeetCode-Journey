@@ -14,16 +14,12 @@ class Solution
         int take = nums[1] ;
         if(n > 1) take = nums[n] + maxRob(nums ,dp , n-2) ;
         int notTake = 0 + maxRob(nums , dp , n-1) ;
-
         return dp[n] = max(take , notTake) ;
     }
     //Function to find the maximum money the thief can get.
     int FindMaxSum(int arr[], int n)
     {
-        // Your code here
-        //  int n = nums.size();
         vector<int>  dp(n +1 , -1);
-
         return maxRob(arr , dp , n -1);
     }
 };
