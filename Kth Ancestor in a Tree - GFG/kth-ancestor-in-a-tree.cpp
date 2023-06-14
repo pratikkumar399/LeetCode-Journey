@@ -111,30 +111,33 @@ struct Node
 };
 */
 // your task is to complete this function
-void solve(Node *root, int k, int node, vector<int> &storage, int &ans) {
-    if (root == NULL)
-        return;
-
-    storage.push_back(root->data);
-
-    solve(root->left, k, node, storage, ans);
-    solve(root->right, k, node, storage, ans);
-
-    int size = storage.size();
-    if (node == storage[size - 1]) {
-        if (size - k - 1 >= 0) {
-            ans = storage[size - k - 1];
-        } else {
-            ans = -1; // Invalid ancestor index
-        }
-        return;
-    }
-    storage.pop_back();
+void solve(Node *root,int k,int node,vector <int> storage,int &ans){
+    if(root==NULL)
+         return ;
+       
+       storage.push_back(root->data);
+       
+       solve(root->left,k,node,storage,ans);
+       solve(root->right,k,node,storage,ans);
+       
+       int size=storage.size();
+       if(node==storage[size-1]){
+              if(size - k - 1 >= 0 )ans=storage[size-k-1];
+              else ans =-1;
+              
+              return;
+       }
+       storage.pop_back();
 }
-
-int kthAncestor(Node *root, int k, int node) {
-    vector<int> storage;
-    int ans = -1; // Default value if ancestor not found
-    solve(root, k, node, storage, ans);
+int kthAncestor(Node *root, int k, int node)
+{
+    // Code here
+    
+    vector <int> storage;
+    int ans = -1;
+    solve(root,k,node,storage,ans);
+    
     return ans;
+    
 }
+
