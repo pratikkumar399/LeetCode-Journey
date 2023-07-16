@@ -10,25 +10,24 @@ using namespace std;
 class Solution{
 public:
 
-    int memo(int W , int wt[] , int val[] , int n , vector<vector<int>> &dp){
-            
-            // return 0;
-             if(n==0){
-               return ((int)(W/wt[0])) * val[0];
+     int knapSack(int n, int W, int val[], int wt[]) {
+        vector<vector<int>> dp(n + 1, vector<int>(W + 1, 0));
+    
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= W; j++) {
+                int pick = INT_MIN;
+                if (wt[i-1] <= j) {
+                    pick = dp[i][j - wt[i-1]] + val[i-1];
+                }
+                int notPick = dp[i-1][j];
+    
+                dp[i][j] = max(pick, notPick);
             }
-            
-            if(dp[n][W] != -1) return dp[n][W];
-            
-            
-            if(wt[n] <= W) return dp[n][W] = max(val[n] + memo(W - wt[n] , wt , val , n, dp), memo(W , wt, val , n-1, dp));
-             return dp[n][W] = 0+  memo(W , wt, val , n-1, dp);
         }
-    int knapSack(int n, int W, int val[], int wt[])
-    {
-        // code here
-         vector<vector<int>> dp(n,vector<int>(W+1,-1));
-       return memo(W , wt , val , n - 1 , dp);
+    
+        return dp[n][W];
     }
+
 };
 
 //{ Driver Code Starts.
