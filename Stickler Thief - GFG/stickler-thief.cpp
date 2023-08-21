@@ -7,20 +7,27 @@ typedef long long int ll;
 class Solution
 {
     public:
-    int maxRob(int nums[],vector<int>&dp,int n){
-        if(n<0)return 0;
-        if(n==0)return nums[0];
-        if(dp[n]!=-1)return dp[n];
-        int take = nums[1] ;
-        if(n > 1) take = nums[n] + maxRob(nums ,dp , n-2) ;
-        int notTake = 0 + maxRob(nums , dp , n-1) ;
-        return dp[n] = max(take , notTake) ;
-    }
     //Function to find the maximum money the thief can get.
+    int fSum(int arr[],int n,vector<int> &dp){
+        if(n < 0 )return 0;
+        if(n==0) return arr[n];
+        
+        if(dp[n]!= -1) return dp[n];
+        
+        int first = arr[n] + fSum(arr, n -2 , dp);
+        int second = 0 + fSum(arr , n-1 , dp);
+        
+        return dp[n] = max(first,second);
+        
+    }
+    
+    
+    
     int FindMaxSum(int arr[], int n)
     {
-        vector<int>  dp(n +1 , -1);
-        return maxRob(arr , dp , n -1);
+        // Your code here
+        vector<int> dp(n+1 , -1);
+        return fSum(arr,n-1,dp);
     }
 };
 
