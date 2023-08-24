@@ -110,7 +110,7 @@ class Solution {
         Node *node = it.first;
         int line = it.second;
         
-            mp[line] = node->data;
+        mp[line] = node->data;
 
         if (node->left != NULL)
         {
@@ -124,7 +124,7 @@ class Solution {
 
     for (auto it : mp)
     {
-        ans.push_back(it.second);
+        cout << it.second<<" ";
     }
 
     return ans;
